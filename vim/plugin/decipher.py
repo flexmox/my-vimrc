@@ -18,10 +18,13 @@ def element_factory(selection, elType='radio', comment='', attrs=None):
     """
     attrs = {} if attrs is None else attrs
     selection = [line.rstrip() for line in selection if line.strip()]
-    firstLine = selection.pop(0)
+    firstLine = selection.pop(0).strip()
     selection = '\n'.join(selection) if selection else ''
 
-    extra, label, title = re.split(r"^([^\s]+)", firstLine)
+    try:
+        label, title = firstLine.split(' ', 1)
+    except ValueError:
+        raise Exception("Question should be in format: Q1 Title")
 
     if label[0].isdigit():
         label = 'Q' + label
