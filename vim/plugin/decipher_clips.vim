@@ -257,7 +257,7 @@ try:
         sys.path.append(pluginPath)
         import decipher
 
-        cases = decipher.cell_factory(vrange, "case", "c")
+        cases = decipher.cell_factory(vrange, "case", "c", attrs={'cond': ''})
 
         cases.append("""  <case label="c99" cond="1">BAD PIPE</case>""")
 

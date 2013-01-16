@@ -48,15 +48,15 @@ def element_factory(selection, elType='radio', comment='', attrs=None):
                                 title=title,
                                 selection=selection))).split("\n")
 
-    attrs_str = " ".join(['%s="%s"' % (k, v) for k, v in attrs.items()])
+    attrs_str = " ".join('%s="%s"' % (k, v) for k, v in attrs.items())
 
-    if attrs:
+    if attrs_str:
         element[0] = element[0].replace('">', '" ' + attrs_str + ">", 1)
 
     return element
 
 
-def cell_factory(selection, cellType, prefix=''):
+def cell_factory(selection, cellType, prefix='', attrs=None):
     """This function returns a v2 xml Cell as a string
 
     Args:
@@ -67,6 +67,7 @@ def cell_factory(selection, cellType, prefix=''):
     Returns:
         string. The formatted Decipher xml Cell
     """
+    attrs = {} if attrs is None else attrs
     selection = [line.strip() for line in selection if line.strip()]
     label_rgx = re.compile("^([a-zA-Z0-9_]{1,6})\. ")
 
@@ -82,6 +83,14 @@ def cell_factory(selection, cellType, prefix=''):
             label = prefix + str(i + 1)
         cells.append("""  <%(cellType)s label="%(label)s">%(cell)s</%(cellType)s>""" %
                      dict(cellType=cellType, label=label, cell=cell))
+
+    attrs_str = " ".join('%s="%s"' % (k, v) for k, v in attrs.items())
+
+    print attrs_str
+    if attrs_str:
+        for i, cell in enumerate(cells):
+            cells[i] = cell.replace('">', '" ' + attrs_str + ">", 1)
+
     return cells
 
 
