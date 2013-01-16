@@ -1,45 +1,12 @@
-vmap <leader>aa  <Esc>:call AddAlts()<CR>
-vmap <leader>ag  <Esc>:call AddGroups()<CR>
-vmap <leader>avh <Esc>:call AddValuesHigh()<CR>
-vmap <leader>avl <Esc>:call AddValuesLow()<CR>
-vmap <leader>ca  <Esc>:call Case()<CR>
-vmap <leader>ch  <Esc>:call Choice()<CR>
-nmap <leader>no  <Esc>:call CleanNotes()<CR>
-vmap <leader>cl  <Esc>:call CleanUp()<CR>
-vmap <leader>co  <Esc>:call Cols()<CR>
-vmap <leader>qc  <Esc>:call CommentQuestion()<CR>
-vmap <leader>es  <Esc>:call Escape()<Esc>
-nmap <leader>hr  <Esc>:call HRef()<CR>
-vmap <leader>hc  <Esc>:call HTMLComment()<CR>
-nmap <leader>ju  <Esc>:call Justify()<CR>
-nmap <leader>mai <Esc>:call Mailto()<CR>
-vmap <leader>mc  <Esc>:call MakeCheckbox()<CR>
-vmap <leader>me  <Esc>:call MakeExtras()<CR>
-vmap <leader>mf  <Esc>:call MakeFloat()<CR>
-vmap <leader>mg  <Esc>:call MakeGroups()<CR>
-vmap <leader>mh  <Esc>:call MakeHTML()<CR>
-vmap <leader>ne  <Esc>:call MakeNets()<CR>
-vmap <leader>mn  <Esc>:call MakeNumber()<CR>
-nmap <leader>mo  <Esc>:call MakeOrs()<Esc>
-vmap <leader>mr  <Esc>:call MakeRadio()<CR>
-vmap <leader>mv  <Esc>:call MakeRating()<CR>
-vmap <leader>ms  <Esc>:call MakeSelect()<CR>
-vmap <leader>mt  <Esc>:call MakeText()<CR>
-vmap <leader>ma  <Esc>:call MakeTextarea()<CR>
-vmap <leader>na  <Esc>:call NoAnswer()<CR>
-vmap <leader>ra  <Esc>:call Rates()<CR>
-vmap <leader>re  <Esc>:call Resource()<CR>
-vmap <leader>ro  <Esc>:call Rows()<CR>
-vmap <leader>qs  <Esc>:call SpaceQuote()<Esc>
-vmap <leader>st  <Esc>:call Strip()<CR>
-nmap <leader>sr  <Esc>:call SwitchRating()<CR>
-vmap <leader>sw  <Esc>:call Switcher()<CR>
-vmap <leader>qu  <Esc>:call URLQuote()<Esc>
-nmap <leader>va  <Esc>:call Validate()<Esc>
-nmap <leader>dif <Esc>:call Vimdiff()<CR>
-nmap <leader>nu  <Esc>:.,$s'\v(^\d+) '\1. 'gc<CR>
-nmap <leader>le  <Esc>:.,$s'\v(^\W+) '\1. 'gc<CR>
+" Normal Mode Mappings
 nmap <leader>ss  <Esc>ggVG:call CleanUp()<CR><Esc>:call NewSurvey()<CR>
+nmap <leader>mo  <Esc>:call MakeOrs()<Esc>
+nmap <leader>ju  <Esc>:call Justify()<CR>
+nmap <leader>sr  <Esc>:call SwitchRating()<CR>
+nmap <leader>dif <Esc>:call Vimdiff()<CR>
+nmap <leader>no  <Esc>:call CleanNotes()<CR>
+nmap <leader>hr  <Esc>:call HRef()<CR>
+nmap <leader>mai <Esc>:call Mailto()<CR>
 nmap <leader>ee  <Esc>i exclusive="1" randomize="0"<Esc>
 nmap <leader>rr  <Esc>i randomize="0"<Esc>
 nmap <leader>oe  <Esc>i open="1" openSize="25" randomize="0"<Esc>
@@ -50,6 +17,42 @@ nmap <leader>sh  <Esc>i shuffle="rows"<Esc>
 nmap <leader>su  <Esc>o<suspend/><Esc>
 nmap <leader>br  <Esc>i<br/><br/><Esc>
 nmap <leader>mb  <Esc>i<br><br><Esc>
+nmap <leader>nu  <Esc>:.,$s'\v(^\d+) '\1. 'gc<CR>
+nmap <leader>le  <Esc>:.,$s'\v(^[A-Z]+) '\1. 'gc<CR>
+nmap <leader>va  <Esc>:call Validate()<Esc>
+
+" Visual Mode Mappings
+vmap <leader>ro  <Esc>:call Rows()<CR>
+vmap <leader>co  <Esc>:call Cols()<CR>
+vmap <leader>ch  <Esc>:call Choice()<CR>
+vmap <leader>ra  <Esc>:call Rates()<CR>
+vmap <leader>mr  <Esc>:call MakeRadio()<CR>
+vmap <leader>mc  <Esc>:call MakeCheckbox()<CR>
+vmap <leader>ms  <Esc>:call MakeSelect()<CR>
+vmap <leader>mn  <Esc>:call MakeNumber()<CR>
+vmap <leader>mf  <Esc>:call MakeFloat()<CR>
+vmap <leader>mt  <Esc>:call MakeText()<CR>
+vmap <leader>ma  <Esc>:call MakeTextarea()<CR>
+vmap <leader>mh  <Esc>:call MakeHTML()<CR>
+vmap <leader>mv  <Esc>:call MakeRating()<CR>
+vmap <leader>re  <Esc>:call Resource()<CR>
+vmap <leader>mg  <Esc>:call MakeGroups()<CR>
+vmap <leader>ne  <Esc>:call MakeNets()<CR>
+vmap <leader>na  <Esc>:call NoAnswer()<CR>
+vmap <leader>ca  <Esc>:call Case()<CR>
+vmap <leader>avl <Esc>:call AddValuesLow()<CR>
+vmap <leader>avh <Esc>:call AddValuesHigh()<CR>
+vmap <leader>ag  <Esc>:call AddGroups()<CR>
+vmap <leader>aa  <Esc>:call AddAlts()<CR>
+vmap <leader>qc  <Esc>:call CommentQuestion()<CR>
+vmap <leader>es  <Esc>:call Escape()<Esc>
+vmap <leader>hc  <Esc>:call HTMLComment()<CR>
+vmap <leader>me  <Esc>:call MakeExtras()<CR>
+vmap <leader>qs  <Esc>:call SpaceQuote()<Esc>
+vmap <leader>st  <Esc>:call Strip()<CR>
+vmap <leader>sw  <Esc>:call Switcher()<CR>
+vmap <leader>qu  <Esc>:call URLQuote()<Esc>
+vmap <leader>cl  <Esc>:call CleanUp()<CR>
 
 
 function! NewSurvey()
