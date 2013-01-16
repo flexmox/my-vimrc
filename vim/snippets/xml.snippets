@@ -1,0 +1,275 @@
+#
+# Comments
+#
+snippet todo
+	<!-- TODO [${1:gen}]: ${2:work} -->
+snippet note
+	<!-- NOTE [${1:gen}]: ${2:work} -->
+snippet xxx
+	<!-- XXX [${1:gen}]: ${2:work} -->
+snippet fixme
+	<!-- FIXME [${1:gen}]: ${2:work} -->
+snippet static
+	http://69.20.5.96/survey/${gv.survey.path}/${1:image}
+#
+# Common Text
+#
+snippet nota
+	None of the Above
+snippet dk
+	Don't Know / Not Applicable
+snippet conflict
+	Works in conflicting industry
+snippet nda
+	Does not agree with NDA
+snippet pipe
+	[pipe: ${1:Q1}]
+snippet and
+	&amp;
+snippet tm
+	&#174;
+snippet	whyyouno
+	ლ(ಠ益ಠლ)
+#
+# Survey Elements
+#
+snippet term
+	<term cond="${1:foo}">${2:bar}: ${3:bar}</term>
+snippet quota
+	<quota sheet="${1:groups}"/>
+snippet block
+	<block label="${1:label}" randomizeChildren="${2:0}" cond="${3:1}">
+	</block>
+	<!-- EO $1 -->
+snippet init
+	<exec when="init">
+	${1:foo}
+	</exec>
+snippet virtinit
+	<exec when="init">
+	${1:foo}
+	</exec>
+snippet gnone
+	<group label="g${1:1}" where="none"></group>
+snippet sniff
+	<html label="sniff" where="survey" source="sniff.html"/>
+	<suspend/>
+snippet condition
+	<condition label="${1:foo}" cond="${2:bar}">${3:baz}</condition>
+#
+# Survey Cells
+#
+snippet noan
+	  <noanswer label="${1:r2}">${2:Don't know}</noanswer>
+snippet nets
+	  <nets>14-17,18-24,25-34,35-44,45-54,55-65</nets>
+#
+# Element Attributes
+#
+snippet sb
+	 shuffleBy="${1:Q}"
+snippet oo
+	 openOptional="1"
+snippet colleg
+	 colLegendRows="${1:}"
+snippet total
+	 style="totalNewStyle" total:amount="100" total:postText="%" colLegend="bottom" amount="100"
+snippet ppt
+	 style="prePostText" cs:${1:postText}="${res.${2:foo}}"
+snippet style
+	 style="${1:style}"
+snippet verify
+	 verify="range(${1:0},${2:100})"
+snippet onload
+	 onLoad="copy('${1:Q}', rows=True${2:})"
+snippet zip
+	 verify="zipcode" size="5"
+snippet multicol
+	 style="multicol_custom" multicol_custom:count="${1:2}" ss:legendColWidth="${2:220px}"
+snippet dir
+	 ratingDirection="reverse"
+snippet rowcond
+	 rowCond="${1:}"
+snippet colcond
+	 colCond="${1:}"
+snippet atmost
+	 atmost="${1}"
+snippet atleast
+	 atleast="${1:1}"
+snippet cond
+	 cond="${1}"
+snippet unique
+	 unique="1"
+snippet grouping
+	 grouping="cols"
+snippet rep
+	 where="report"
+snippet sst
+	 sst="0"
+snippet survey
+	 where="survey,notdp"
+snippet notdp
+	 where="none,notdp"
+snippet where
+	 where="${1:survey,notdp}"
+snippet none
+	 where="none"
+snippet rightof
+	 rightOf="${1:}"
+snippet below
+	 below="${1:}"
+snippet bucket
+	 virtual="bucketize(co)"
+snippet sortrows
+	 sortRows="${1:asc}"
+snippet size
+	 size="${1}"
+snippet width
+	 width="${1}"
+snippet rating
+	 averages="cols" values="order" adim="rows" type="rating"
+snippet virtual
+	 virtual="assignRandomOrder('${1:block}', 'children')"
+#
+# Snippet Bundles
+#
+snippet languages
+	<languages default="english">
+		<language name="english" var="co" value="us"/>
+		<language name="spanish" var="co" value="es"/>
+		<language name="german"  var="co" value="de"/>
+	</languages>
+snippet csextra
+	<exec>
+	for r in ${1:virtual}.rows:
+		if ${2:Q1}.check(r.styles.cs.extra):
+			$1.val = r.index
+			break
+	</exec>
+#
+# Python Snippets
+#
+snippet getcells
+	cells = gv.survey.root.quota.getQuotaCells()
+snippet order
+	<exec>${1:Q1}.${2:rows}.order = ${3:Q2}.${4:rows}.order</exec>
+snippet vquota
+	v${1:Picked}.val = [int(m[len('/$1/'):].split('_')[0]) - 1 for m in p.markers if m.startswith('/$1/')][0]
+#
+# Python Functions
+#
+snippet timestamp
+	def save_time_stamp(q):    
+		"""
+		Expects a text question and saves the current time stamp
+		"""
+		q.val = gv.survey.root.transformDate(time.time())
+snippet flash_quote
+	import urllib
+
+	def flash_quote(string):
+		"""
+		Checks if flashDetected is True,
+		If True, returns URL escaped string
+		Else returns string unchanged
+		"""
+		if flashDetected:
+			return urllib.quote(string)
+		else:
+			return string
+snippet groupmap
+	def make_group_map(q):
+		groupMap = {}
+		for r in q.rows:
+			group = groupMap.setdefault(r.group.label, [])
+			group.append(r)
+		return groupMap
+#
+# Debugging
+#
+snippet dump
+	<exec>
+	${1:pass}
+	</exec>
+	<html label="dumps" where="survey">
+	Dump
+	<br/><br/>
+	</html>
+	<suspend/>
+snippet radio
+	<radio label="Q1">
+	  <title>
+	      Radio
+	  </title>
+	  <comment>Please select one</comment>
+	  <row label="r1">1</row>
+	  <row label="r2">2</row>
+	  <row label="r3">3</row>
+	</radio>
+	<suspend/>
+snippet checkbox
+	<checkbox label="Q2" atleast="1">
+	  <title>
+	      Checkbox
+	  </title>
+	  <comment>Please select all that apply</comment>
+	  <row label="r1">1</row>
+	  <row label="r2">2</row>
+	  <row label="r3">3</row>
+	</checkbox>
+	<suspend/>
+snippet select
+	<select label="Q3" optional="0">
+	  <title>
+		  Select
+	  </title>
+	  <row label="r1">1</row>
+	  <row label="r2">2</row>
+	  <row label="r3">3</row>
+	  <choice label="ch1">Blue</choice>
+	  <choice label="ch2">Green</choice>
+	  <choice label="ch3">Red</choice>
+	</select>
+	<suspend/>
+snippet text
+	<text label="Q4" optional="0">
+	  <title>
+		  Text
+	  </title>
+	  <row label="r1">1</row>
+	  <row label="r2">2</row>
+	  <row label="r3">3</row>
+	</text>
+	<suspend/>
+snippet textarea
+	<textarea label="Q5" optional="0">
+	  <title>
+		  Text Area
+	  </title>
+	  <row label="r1">1</row>
+	  <row label="r2">2</row>
+	  <row label="r3">3</row>
+	</textarea>
+	<suspend/>
+snippet number
+	<number label="Q6" optional="0" size="3">
+	  <title>
+		   Number Question
+	  </title>
+	  <comment>Please enter a whole number</comment>
+	  <row label="r1">1</row>
+	  <row label="r2">2</row>
+	  <row label="r3">3</row>
+	</number>
+	<suspend/>
+snippet wtf
+	<checkbox label="vWTF" atleast="1">
+	  <title>
+	    Assertion
+	  </title>
+	  <row label="r1">Exception</row>
+	  <virtual>
+	if ${1:True}:
+	    vWTF.r1.val = 1
+	  </virtual>
+	</checkbox>
