@@ -19,35 +19,31 @@ Cheat Sheet
 ===========
 
 Normal Mode
-    To clean ``<!-- XXX [foo]: bar -->`` notes made by snipmate for sending to QA
+
+    Clean up unicode, newlines, tabs and place the current buffer in a new-survey template
 
     .. code-block::
 
-        ,no
-
-    Make the current line into a hyperlink
-
-    .. code-block::
-
-        ,hr
-
-    Justify the current line to prevent horizontal scrolling
-
-    .. code-block::
-
-        ,ju
-
-    Turn the current line into a mailto: hyperlink
-
-    .. code-block::
-
-        ,mai
+        ,ss
 
     Create boolean logic you can trust **Make Ors**
 
     .. code-block::
 
         ,mo
+
+        Label?: Q1
+        Indices?: 1-3,5,8
+        Element Type? [r]: r
+        Join type? [or]: or
+
+        returns: Q1.r1 or Q1.r2 or Q1.r3 or Q1.r5 or Q1.r8
+
+    Justify the current line to prevent horizontal scrolling
+
+    .. code-block::
+
+        ,ju
 
     Switch adim and averages between cols and rows **Switch Rating**
 
@@ -61,36 +57,98 @@ Normal Mode
 
         ,dif
 
-Visual Mode
-    Add alts to Cells and title
+    To clean ``<!-- XXX [foo]: bar -->`` notes made by snipmate for sending to QA
+
+    .. code-block::
+
+        ,no
+
+    Turn the current line into a hyperlink
+
+    .. code-block::
+
+        ,hr
+
+    Turn the current line into a mailto: hyperlink
+
+    .. code-block::
+
+        ,mai
+
+    Insert ``exclusive="1" randomize="0"``
+
+    .. code-block::
+
+        ,ee
+
+    Insert ``randomize="0"``
+
+    .. code-block::
+
+        ,rr
+
+    Insert ``open="1" openSize="25" randomize="0"``
+
+    .. code-block::
+
+        ,oe
+
+    Insert ``aggregate="0" percentages="0"``
 
     .. code-block::
 
         ,aa
 
-    Add groups to Cells
+    Insert ``optional="1"``
 
     .. code-block::
 
-        ,ag
+        ,oo
 
-    Add values to Cells from high to low
-
-    .. code-block::
-
-        ,avh
-
-    Add values to Cells from low to high
+    Insert ``where="execute"``
 
     .. code-block::
 
-        ,avl
+        ,dev
 
-    Create cases surrounded by a ``pipe`` Element
+    Insert ``shuffle="rows"``
 
     .. code-block::
 
-        ,ca
+        ,sh
+
+    Insert ``<suspend/>`` below current line
+
+    .. code-block::
+
+        ,su
+
+    Insert ``<br/><br/>``
+
+    .. code-block::
+
+        ,br
+
+    Insert ``<br><br>`` **Mail Break**
+
+    .. code-block::
+
+        ,mb
+
+
+Visual Mode
+
+    Make row Cells
+
+    .. code-block::
+
+        ,ro
+
+    Make col Cells
+
+    .. code-block::
+
+        ,co
 
     Make choice Cells
 
@@ -98,17 +156,119 @@ Visual Mode
 
         ,ch
 
-    Clean out common utf-8 chars and remove excessive tabs, newlines, etc
+    Make rating row cells with poles. e.g. ``Disagree</br>1,2,3,4,Agree<br/>5``
 
     .. code-block::
 
-        ,cl
+        ,ra
 
-    Make col Cells
+    Make radio Element
 
     .. code-block::
 
-        ,co
+        ,mr
+
+    Make checkbox Element
+
+    .. code-block::
+
+        ,mc
+
+    Make select Element
+
+    .. code-block::
+
+        ,ms
+
+    Make number Element
+
+    .. code-block::
+
+        ,mn
+
+    Make float Element
+
+    .. code-block::
+
+        ,mf
+
+    Make text Element
+
+    .. code-block::
+
+        ,mt
+
+    Make textarea Element
+
+    .. code-block::
+
+        ,ma
+
+    Make html Element
+
+    .. code-block::
+
+        ,mh
+
+    Make radio-rating Element **Make Values**
+
+    .. code-block::
+
+        ,mv
+
+    Make res Elements
+
+    .. code-block::
+
+        ,re
+
+    Make group Cells
+
+    .. code-block::
+
+        ,mg
+
+    Make net Cells
+
+    .. code-block::
+
+        ,ne
+
+    Make noanswer Cells
+
+    .. code-block::
+
+        ,na
+
+    Make pipe by creating cases out of selected lines
+
+    .. code-block::
+
+        ,ca
+
+    Add values to Cells from low to high
+
+    .. code-block::
+
+        ,avl
+
+    Add values to Cells from high to low
+
+    .. code-block::
+
+        ,avh
+
+    Add groups to Cells
+
+    .. code-block::
+
+        ,ag
+
+    Add alts to Cells and title
+
+    .. code-block::
+
+        ,aa
 
     Create a question comment
 
@@ -128,101 +288,11 @@ Visual Mode
 
         ,hc
 
-    Make checkbox Element
-
-    .. code-block::
-
-        ,mc
-
     Pull text node into configurable style **Make Extras**
 
     .. code-block::
 
         ,me
-
-    Make float Element
-
-    .. code-block::
-
-        ,mf
-
-    Make group Cells
-
-    .. code-block::
-
-        ,mg
-
-    Make html Element
-
-    .. code-block::
-
-        ,mh
-
-    Make net Cells
-
-    .. code-block::
-
-        ,ne
-
-    Make number Element
-
-    .. code-block::
-
-        ,mn
-
-    Make radio Element
-
-    .. code-block::
-
-        ,mr
-
-    Make radio-rating Element **Make Values**
-
-    .. code-block::
-
-        ,mv
-
-    Make select Element
-
-    .. code-block::
-
-        ,ms
-
-    Make text Element
-
-    .. code-block::
-
-        ,mt
-
-    Make textarea Element
-
-    .. code-block::
-
-        ,ma
-
-    Make noanswer Cells
-
-    .. code-block::
-
-        ,na
-
-    Make rating scale with poles. e.g. ``Disagree</br>1,2,3,4,Agree<br/>5``
-
-    .. code-block::
-
-        ,ra
-
-    Make res Elements
-
-    .. code-block::
-
-        ,re
-
-    Make row Cells
-
-    .. code-block::
-
-        ,ro
 
     HTML escape spaces **Quote Spaces**
 
@@ -247,3 +317,9 @@ Visual Mode
     .. code-block::
 
         ,qu
+
+    Clean out common utf-8 chars and remove excessive tabs, newlines, etc
+
+    .. code-block::
+
+        ,cl
