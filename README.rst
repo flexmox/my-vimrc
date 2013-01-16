@@ -19,7 +19,6 @@ Cheat Sheet
 ===========
 
 Normal Mode
-
     Clean up unicode, newlines, tabs and place the current buffer in a new-survey template
 
     .. code-block::
@@ -137,7 +136,6 @@ Normal Mode
 
 
 Visual Mode
-
     Make row Cells
 
     .. code-block::
