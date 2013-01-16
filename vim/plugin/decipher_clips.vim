@@ -737,21 +737,12 @@ python << EOF
 try:
     import vim
 
-    def python_input(message):
-        vim.command('call inputsave()')
-        vim.command("let user_input = input('" + message + ": ')")
-        vim.command('call inputrestore()')
-        return vim.eval('user_input')
-
-    label     = python_input("Label?")
-    indices   = python_input("Indices?")
-    element   = python_input("Element Type? [r]") or 'r'
-    joinType  = python_input("Join type? [or]") or 'or'
-    joinType  = ' %s ' % joinType
-
-    def MakeOrs(label, indices, element, joinType):
+    def MakeOrs(line, label, indices, element, joinType):
+        import re
 
         indices = [e.strip() for e in indices.split(',')]
+
+        cond_rgx = re.compile('cond=".*?"')
 
         res = []
         for i in indices:
@@ -766,9 +757,27 @@ try:
                       'element': element,
                       'joinType': joinType}
 
-        return joinType.join(["%(label)s.%(element)s" % formatDict + str(i) for i in res])
+        condString = joinType.join(["%(label)s.%(element)s" % formatDict + str(i) for i in res])
 
-    vim.current.line = MakeOrs(label, indices, element, joinType)
+        if cond_rgx.findall(line):
+            return cond_rgx.sub('cond="{0}"'.format(condString), line)
+
+        return condString
+
+
+    def python_input(message):
+        vim.command('call inputsave()')
+        vim.command("let user_input = input('" + message + ": ')")
+        vim.command('call inputrestore()')
+        return vim.eval('user_input')
+
+    label     = python_input("Label?")
+    indices   = python_input("Indices?")
+    element   = python_input("Element Type? [r]") or 'r'
+    joinType  = python_input("Join type? [or]") or 'or'
+    joinType  = ' %s ' % joinType
+
+    vim.current.line = MakeOrs(vim.current.line, label, indices, element, joinType)
 
 except Exception, e:
     print e

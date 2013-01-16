@@ -25,7 +25,8 @@ Normal Mode
 
         ,ss
 
-    Create boolean logic you can trust **Make Ors**
+    Create boolean logic you can trust. Conditions will be placed inside cond if present
+    on current line **Make Ors**
 
     .. code-block::
 
