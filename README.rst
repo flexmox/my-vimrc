@@ -26,7 +26,7 @@ Normal Mode
         ,ss
 
     Create boolean logic you can trust. Conditions will be placed inside cond if present
-    on current line **Make Ors**
+    on current line. Supports alpha ranges as well as numeric. **Make Ors**
 
     .. code-block::
 
@@ -34,10 +34,19 @@ Normal Mode
 
         Label?: Q1
         Indices?: 1-3,5,8
-        Element Type? [r]: r
+        Cell Type?: r
         Join type? [or]: or
 
         returns: Q1.r1 or Q1.r2 or Q1.r3 or Q1.r5 or Q1.r8
+
+        ,mo
+
+        Label?: Q2
+        Indices?: A-C,E,H
+        Cell Type?:
+        Join type? [or]:
+
+        returns: Q2.A or Q2.B or Q2.C or Q2.E or Q2.H
 
     Justify the current line to prevent horizontal scrolling
 
