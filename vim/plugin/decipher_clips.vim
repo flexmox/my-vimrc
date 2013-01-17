@@ -741,6 +741,7 @@ try:
         import re
         from string import uppercase, lowercase
 
+        assert indices.find('--') == -1, "Cannot have multiple dashes in range"
         firstChar = indices[0]
         elements  = re.sub('[-,]', '', indices)
         indices   = [e.strip() for e in indices.split(',')]
