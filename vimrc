@@ -10,6 +10,7 @@ set nostartofline
 set wildmenu
 
 let NERDTreeIgnore=['\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$']
+let g:snippets_dir='~/.vim/private,~/.vim/snippets'
 
 map <leader>tl :TaskList<CR>
 map <leader>gd :GundoToggle<CR>
