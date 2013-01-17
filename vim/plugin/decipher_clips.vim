@@ -739,25 +739,71 @@ try:
 
     def MakeOrs(line, label, indices, element, joinType):
         import re
+        from string import uppercase, lowercase
 
-        indices = [e.strip() for e in indices.split(',')]
+        firstChar = indices[0]
+        elements  = re.sub('[-,]', '', indices)
+        indices   = [e.strip() for e in indices.split(',')]
+        joinType  = ' %s ' % joinType
 
         cond_rgx = re.compile('cond=".*?"')
 
+        syntaxError = "Unknown input. Ranges should numeric 1-10, or alpha A-F, but not both"
+        rangeError = "Range is backwards: %s-%s"
+
         res = []
-        for i in indices:
-            if '-' in i:
-                rng = map(int, i.split('-'))
-                rng = rng[0], rng[1] + 1
-                res.extend(list(range(*rng)))
-            else:
-                res.append(int(i))
+
+        if firstChar.isdigit():
+            if not elements.isdigit():
+                raise Exception(syntaxError)
+
+            for i in indices:
+                if '-' in i:
+                    start, end = map(int, i.split('-'))
+                    if start > end:
+                        raise Exception("Range is backwards: %d-%d" % (start, end))
+                    rng = list(range(start, end + 1))
+                    res.extend(map(str, rng))
+                else:
+                    res.append(i)
+
+        if firstChar.isalpha():
+            if not (elements.islower() or elements.isupper()):
+                raise Exception("Cannot mix case. All letters must be upper or lower")
+
+            for c in indices:
+                case = uppercase if firstChar.isupper() else lowercase
+
+                if '-' in c:
+                    start, end = c.split('-')
+                    if len(start) > len(end):
+                        raise Exception(rangeError % (start, end))
+                    for c in (start, end):
+                        if c.count(c[0]) != len(c):
+                            raise Exception("Labels must be uniform: AA BB CC, not AC")
+                    startIndex = case.index(start[0])
+                    if len(start) == len(end):
+                        endIndex = case.index(end[0])
+                        if endIndex < startIndex:
+                            raise Exception(rangeError % (start, end))
+                    multiplier = len(start)
+                    rng = [start]
+                    while start != end:
+                        i = (startIndex + 1) % len(case)
+                        if i < startIndex:
+                            multiplier += 1
+                        startIndex = i
+                        start = case[startIndex] * multiplier
+                        rng.append(start)
+                    res.extend(rng)
+                else:
+                    res.append(c)
 
         formatDict = {'label': label,
                       'element': element,
                       'joinType': joinType}
 
-        condString = joinType.join(["%(label)s.%(element)s" % formatDict + str(i) for i in res])
+        condString = joinType.join(["%(label)s.%(element)s" % formatDict + c for c in res])
 
         if cond_rgx.findall(line):
             return cond_rgx.sub('cond="{0}"'.format(condString), line)
@@ -773,9 +819,8 @@ try:
 
     label     = python_input("Label?")
     indices   = python_input("Indices?")
-    element   = python_input("Element Type? [r]") or 'r'
+    element   = python_input("Cell Type?")
     joinType  = python_input("Join type? [or]") or 'or'
-    joinType  = ' %s ' % joinType
 
     vim.current.line = MakeOrs(vim.current.line, label, indices, element, joinType)
 
