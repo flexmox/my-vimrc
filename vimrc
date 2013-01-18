@@ -14,9 +14,10 @@ let g:snippets_dir='~/.vim/private,~/.vim/snippets'
 
 map <leader>tl :TaskList<CR>
 map <leader>gd :GundoToggle<CR>
-map <leader>ne :set noexpandtab<CR>
-map <leader>nw :set nowrap<CR>
+map <leader>ne :set noexpandtab!<CR>
+map <leader>nw :set nowrap!<CR>
 map <leader>ts :set ts=50<CR>
+map <leader>sp :set spell!<CR>
 
 let g:pep8_map = '<leader>8'
 
