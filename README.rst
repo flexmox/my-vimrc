@@ -9,7 +9,7 @@ After cloning you can run install.sh to create .vim and .vimrc sym links
 to ``~/.vimrc`` and ``~/.vim``.
 
 To retrieve necessary submodules you can either use the helper
-script ``submodules-reload.sh`` or use git manually
+script ``submodules-reload.sh`` or use git manually.
 
 Checkout vim/snippets/xml.snippets for useful autocompletes
 that can be executed by typing the snippet name and pressing tab
@@ -25,8 +25,8 @@ Normal Mode
 
         ,ss
 
-    Create boolean logic you can trust. Conditions will be placed inside cond if present
-    on current line. Supports alpha ranges as well as numeric. **Make Ors**
+    **Make Ors**: Create boolean logic you can trust. Conditions will be placed inside cond if present
+    on current line. Supports alpha ranges as well as numeric.
 
     .. code-block::
 
@@ -54,7 +54,7 @@ Normal Mode
 
         ,ju
 
-    Switch adim and averages between cols and rows **Switch Rating**
+    **Switch Rating**: Switch adim and averages between cols and rows
 
     .. code-block::
 
@@ -138,7 +138,7 @@ Normal Mode
 
         ,br
 
-    Insert ``<br><br>`` **Mail Break**
+    **Mail Break**: Insert ``<br><br>``
 
     .. code-block::
 
@@ -218,7 +218,7 @@ Visual Mode
 
         ,mh
 
-    Make radio-rating Element **Make Values**
+    **Make Values**: Make radio-rating Element
 
     .. code-block::
 
@@ -290,19 +290,19 @@ Visual Mode
 
         ,es
 
-    Comment out some text **HTML Comment**
+    **HTML Comment**: Comment out some text
 
     .. code-block::
 
         ,hc
 
-    Pull text node into configurable style **Make Extras**
+    **Make Extras**: Pull text node into configurable style
 
     .. code-block::
 
         ,me
 
-    HTML escape spaces **Quote Spaces**
+    **Quote Spaces**: HTML escape spaces
 
     .. code-block::
 
@@ -320,7 +320,7 @@ Visual Mode
 
         ,sw
 
-    URL escape selection **Quote URL**
+    **Quote URL**: URL escape selection
 
     .. code-block::
 
