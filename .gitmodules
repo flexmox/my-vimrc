@@ -13,3 +13,6 @@
 [submodule "vim/bundle/xmledit"]
 	path = vim/bundle/xmledit
 	url = https://github.com/sukima/xmledit.git
+[submodule "vim/bundle/decipher-clips"]
+	path = vim/bundle/decipher-clips
+	url = https://github.com/rwscarb/decipher-clips.git
