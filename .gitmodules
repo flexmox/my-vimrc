@@ -58,3 +58,6 @@
 [submodule "vim/bundle/jslint"]
 	path = vim/bundle/jslint
 	url = https://github.com/hallettj/jslint.vim.git
+[submodule "vim/bundle/yank-ring"]
+	path = vim/bundle/yank-ring
+	url = https://github.com/vim-scripts/YankRing.vim.git
