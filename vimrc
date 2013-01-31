@@ -18,6 +18,7 @@ map <leader>ne :set noexpandtab!<CR>
 map <leader>nw :set nowrap!<CR>
 map <leader>ts :set ts=50<CR>
 map <leader>sp :set spell!<CR>
+map <leader>li :set list!<CR>
 
 let g:pep8_map = '<leader>8'
 
